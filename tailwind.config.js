@@ -1,16 +1,22 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
-  content: [],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     extend: {
       colors: {
-        light_gray_cyan_500: "hsl(180, 52%, 96%)",
-        light_gray_cyan_900: " hsl(180, 31%, 95%)",
-        dark_gray_cyan_500: "hsl(180, 8%, 52%)",
-        dark_gray_cyan_900: "hsl(180, 14%, 20%)",
-      }
+        cyan: {
+          100: "hsl(180, 52%, 96%)",
+          300: " hsl(180, 31%, 95%)",
+          500: "hsl(179, 29%, 51%)",
+          700: "hsl(180, 8%, 52%)",
+          900: "hsl(180, 14%, 20%)",
+        },
+        ...defaultTheme.colors,
+      },
     },
   },
   plugins: [],
-}
-
+};
