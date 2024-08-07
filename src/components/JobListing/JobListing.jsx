@@ -18,38 +18,48 @@ const JobListing = () => {
 
   useEffect(() => {
     filterList();
-  }, [filters])
+  }, [filters]);
 
   const setFilterList = (list) => {
     setFilters(list);
-  }
+  };
 
   const filterList = () => {
-   if (filters?.length) {
-    const list = jobList.filter(({ role, level, languages, tools }) => {
-      const combinedItems = [role, level, ...languages, ...tools];
+    if (filters?.length) {
+      const list = jobList.filter(({ role, level, languages, tools }) => {
+        const combinedItems = [role, level, ...languages, ...tools];
         return combinedItems.some((item) => filters.includes(item));
-    });
-    setFilteredList(list);
-   } else {
-    setFilteredList(jobList);
-   }
-  }
+      });
+      setFilteredList(list);
+    } else {
+      setFilteredList(jobList);
+    }
+  };
 
   const removeFilter = (key) => {
-    setFilterList(filters?.filter(item => item !== key));
-  }
+    setFilterList(filters?.filter((item) => item !== key));
+  };
 
   const clearAll = () => {
     setFilterList([]);
-  }
+  };
 
   return (
-    <div className={`mx-44 relative ${filters?.length ? 'my-16' : 'my-7'}`}>
-      {filters?.length ? (<div className="bg-white justify-between w-full top-[-93px] py-4 px-9 flex items-center shadow-cyan-500/5 shadow-xl absolute">
-        {filters?.map(item => <Chip item={item} isRemoveEnabled onRemoveClick={removeFilter} />)}
-        <button type="button" onClick={clearAll} className="text-cyan-500 font-spartan text-sm font-bold underline">Clear </button>
-      </div>) : null}
+    <div className={`mx-44 relative ${filters?.length ? "my-16" : "my-7"}`}>
+      {filters?.length ? (
+        <div className="bg-white justify-between w-full top-[-93px] py-4 px-9 flex items-center shadow-cyan-500/5 shadow-xl absolute">
+          {filters?.map((item) => (
+            <Chip item={item} isRemoveEnabled onRemoveClick={removeFilter} />
+          ))}
+          <button
+            type="button"
+            onClick={clearAll}
+            className="text-cyan-500 font-spartan text-sm font-bold underline"
+          >
+            Clear{" "}
+          </button>
+        </div>
+      ) : null}
       {filteredList.map(
         ({
           position,
@@ -68,8 +78,9 @@ const JobListing = () => {
         }) => (
           <div
             key={id}
-            className={`bg-white m-4 py-6 px-9 flex items-center shadow-cyan-500/5 shadow-xl ${featured ? "border-l-4 border-cyan-500 rounded" : ""
-              }`}
+            className={`bg-white m-4 py-6 px-9 flex items-center shadow-cyan-500/5 shadow-xl ${
+              featured ? "border-l-4 border-cyan-500 rounded" : ""
+            }`}
           >
             <div>
               <img src={logo} alt={company} />
@@ -100,15 +111,17 @@ const JobListing = () => {
               </div>
             </div>
             <div className="flex flex-1 justify-end">
-              {[role, level, ...languages || [], ...tools || []]?.map((item) => (
-                <Chip item={item}
-                  key={item}
-                  onClick={() => {
-                    setFilterList([...filters, item])
-                  }}
-                />
-
-              ))}
+              {[role, level, ...(languages || []), ...(tools || [])]?.map(
+                (item) => (
+                  <Chip
+                    item={item}
+                    key={item}
+                    onClick={() => {
+                      setFilterList([...filters, item]);
+                    }}
+                  />
+                )
+              )}
             </div>
           </div>
         )
