@@ -21,7 +21,7 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone YOUR_REPOSITORY_LINK
+   git clone https://github.com/vparul/fm-job-listing
    ```
 
 2. Navigate to the project directory:
