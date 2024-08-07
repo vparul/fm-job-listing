@@ -45,16 +45,20 @@ const JobListing = () => {
   };
 
   return (
-    <div className={`mx-44 relative ${filters?.length ? "my-16" : "my-7"}`}>
+    <div
+      className={`mx-3 md:mx-10 lg:mx-44 relative ${filters?.length ? "my-16" : "mt-7"}`}
+    >
       {filters?.length ? (
         <div className="bg-white justify-between w-full top-[-93px] py-4 px-9 flex items-center shadow-cyan-500/5 shadow-xl absolute">
+          <div className="flex flex-wrap">
           {filters?.map((item) => (
-            <Chip item={item} isRemoveEnabled onRemoveClick={removeFilter} />
+            <Chip key={item} item={item} isRemoveEnabled onRemoveClick={removeFilter} />
           ))}
+          </div>
           <button
             type="button"
             onClick={clearAll}
-            className="text-cyan-500 font-spartan text-sm font-bold underline"
+            className="text-gray-500 font-spartan text-sm font-bold hover:underline hover:text-cyan-500"
           >
             Clear{" "}
           </button>
@@ -78,15 +82,17 @@ const JobListing = () => {
         }) => (
           <div
             key={id}
-            className={`bg-white m-4 py-6 px-9 flex items-center shadow-cyan-500/5 shadow-xl ${
+            className={`bg-white flex-col md:flex-row relative my-14 last:mb-0 md:m-4 py-6 px-3 md:px-9 flex md:items-center shadow-cyan-500/5 shadow-xl ${
               featured ? "border-l-4 border-cyan-500 rounded" : ""
             }`}
           >
-            <div>
-              <img src={logo} alt={company} />
-            </div>
-            <div className="flex flex-col ml-5 w-3/5">
-              <div className="flex font-spartan">
+            <img
+              src={logo}
+              alt={company}
+              className="absolute top-[-20px] md:relative w-full h-full w-12 h-12"
+            />
+            <div className="flex flex-col ml-3 md:ml-5 w-full md:w-2/5">
+              <div className="flex font-spartan md:m-0 mt-5">
                 <h4 className="text-cyan-500 font-bold mr-3">{company}</h4>
                 {newJob && (
                   <span className="text-white font-spartan bg-cyan-500 rounded-2xl mr-2 uppercase px-2 py-1 text-xs">
@@ -102,7 +108,7 @@ const JobListing = () => {
               <h4 className="text-cyan-900 font-bold my-2 cursor-pointer font-lg hover:text-cyan-500">
                 {position}
               </h4>
-              <div className="text-gray-500 text-sm">
+              <div className="text-gray-500 text-sm mb-5">
                 <span className="pr-3">{postedAt}</span>
                 <span>•</span>
                 <span className="px-3">{contract}</span>
@@ -110,14 +116,14 @@ const JobListing = () => {
                 <span className="px-3">{location}</span>
               </div>
             </div>
-            <div className="flex flex-1 justify-end">
+            <div className="flex flex-1 flex-wrap justify-start md:justify-end pt-5 ml-5 border-t-[1px] md:border-0 border-gray-400 md:m-0">
               {[role, level, ...(languages || []), ...(tools || [])]?.map(
                 (item) => (
                   <Chip
                     item={item}
                     key={item}
                     onClick={() => {
-                      setFilterList([...filters, item]);
+                      if (!filters?.includes(item)) setFilterList([...filters, item]);
                     }}
                   />
                 )

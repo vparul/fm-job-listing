@@ -1,7 +1,7 @@
 import React from "react";
 
 const Chip = ({ item, onClick, isRemoveEnabled, onRemoveClick }) => (
-  <div className="flex mr-2">
+  <div className="flex mr-2 mb-4">
     <div
       key={item}
       className={`bg-cyan-100 font-spartan flex items-center text-cyan-500 text-xs px-2 py-1 font-bold ${
