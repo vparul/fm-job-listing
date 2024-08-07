@@ -8,12 +8,10 @@ const JobListing = () => {
   const [filters, setFilters] = useState([]);
 
   useEffect(() => {
-    return async () => {
-      await getJobs().then((response) => {
+     getJobs().then((response) => {
         setJobList(response);
         setFilteredList(response);
       });
-    };
   }, []);
 
   useEffect(() => {
@@ -89,7 +87,7 @@ const JobListing = () => {
             <img
               src={logo}
               alt={company}
-              className="absolute top-[-20px] md:relative w-full h-full w-12 h-12"
+              className="absolute top-[-20px] md:mt-5 md:relative md:w-24 md:h-24 w-12 h-12"
             />
             <div className="flex flex-col ml-3 md:ml-5 w-full md:w-2/5">
               <div className="flex font-spartan md:m-0 mt-5">
