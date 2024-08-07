@@ -8,10 +8,10 @@ const JobListing = () => {
   const [filters, setFilters] = useState([]);
 
   useEffect(() => {
-     getJobs().then((response) => {
-        setJobList(response);
-        setFilteredList(response);
-      });
+    getJobs().then((response) => {
+      setJobList(response);
+      setFilteredList(response);
+    });
   }, []);
 
   useEffect(() => {
@@ -44,19 +44,26 @@ const JobListing = () => {
 
   return (
     <div
-      className={`mx-3 md:mx-10 lg:mx-44 relative ${filters?.length ? "my-16" : "mt-7"}`}
+      className={`mx-3 md:mx-10 lg:mx-44 relative ${
+        filters?.length ? "my-16" : "mt-7"
+      }`}
     >
       {filters?.length ? (
         <div className="bg-white justify-between w-full top-[-93px] py-4 px-9 flex items-center shadow-cyan-500/5 shadow-xl absolute">
           <div className="flex flex-wrap">
-          {filters?.map((item) => (
-            <Chip key={item} item={item} isRemoveEnabled onRemoveClick={removeFilter} />
-          ))}
+            {filters?.map((item) => (
+              <Chip
+                key={item}
+                item={item}
+                isRemoveEnabled
+                onRemoveClick={removeFilter}
+              />
+            ))}
           </div>
           <button
             type="button"
             onClick={clearAll}
-            className="text-gray-500 font-spartan text-sm font-bold hover:underline hover:text-cyan-500"
+            className="text-gray-500  text-sm font-bold hover:underline hover:text-cyan-500"
           >
             Clear{" "}
           </button>
@@ -90,10 +97,10 @@ const JobListing = () => {
               className="absolute top-[-20px] md:mt-5 md:relative md:w-24 md:h-24 w-12 h-12"
             />
             <div className="flex flex-col ml-3 md:ml-5 w-full md:w-2/5">
-              <div className="flex font-spartan md:m-0 mt-5">
+              <div className="flex  md:m-0 mt-5">
                 <h4 className="text-cyan-500 font-bold mr-3">{company}</h4>
                 {newJob && (
-                  <span className="text-white font-spartan bg-cyan-500 rounded-2xl mr-2 uppercase px-2 py-1 text-xs">
+                  <span className="text-white  bg-cyan-500 rounded-2xl mr-2 uppercase px-2 py-1 text-xs">
                     New!
                   </span>
                 )}
@@ -121,7 +128,8 @@ const JobListing = () => {
                     item={item}
                     key={item}
                     onClick={() => {
-                      if (!filters?.includes(item)) setFilterList([...filters, item]);
+                      if (!filters?.includes(item))
+                        setFilterList([...filters, item]);
                     }}
                   />
                 )
