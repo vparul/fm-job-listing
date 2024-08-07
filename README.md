@@ -7,7 +7,7 @@ This project is a static job listing website developed as part of a challenge fr
 
 You can view the live demo of the project [here](https://fm-static-job-listing.netlify.app/).
 
-For a detailed showcase, please refer to the Loom video: [Watch the showcase](YOUR_LOOM_VIDEO_LINK).
+For a detailed showcase, please refer to the Loom video: [Watch the showcase](https://www.loom.com/share/4e9a7f021b7b4ef2b3975ab9ab9ac19a).
 
 ## Features
 
